@@ -38,6 +38,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         RegistroPX = new javax.swing.JMenuItem();
+        MConsulta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +55,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(RegistroPX);
 
+        MConsulta.setText("Consulta");
+        MConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MConsultaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(MConsulta);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -62,11 +71,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 760, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 384, Short.MAX_VALUE)
         );
 
         pack();
@@ -74,8 +83,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void RegistroPXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroPXActionPerformed
         // TODO add your handling code here:
-       registro.setVisible(true);
+        consulta.setVisible(false);
+        registro.setVisible(true);
     }//GEN-LAST:event_RegistroPXActionPerformed
+
+    private void MConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MConsultaActionPerformed
+        // TODO add your handling code here:
+        registro.setVisible(false);
+        consulta.setVisible(true);
+    }//GEN-LAST:event_MConsultaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,6 +129,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MConsulta;
     private javax.swing.JMenuItem RegistroPX;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

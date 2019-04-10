@@ -5,6 +5,16 @@
  */
 package proyecto3parcial;
 
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
+
+
 /**
  *
  * @author wpena
@@ -18,7 +28,22 @@ public class Registro extends javax.swing.JInternalFrame {
     
     public Registro() {
       initComponents();
-        
+      
+      Connection conn = null ;
+      
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306 /pacientes","root", "");
+            Statement stmt =conn.createStatement();
+           stmt.executeUpdate("INSERT INTO registro VALUES('00001','Juan','Lopez','1987-05-23','M','0506198700937')");
+        } catch (SQLException ex) {
+            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Falla sin conexion a la Base de Datos");
+        }
     }
 
     /**

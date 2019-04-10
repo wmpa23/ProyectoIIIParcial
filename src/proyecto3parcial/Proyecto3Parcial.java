@@ -5,6 +5,8 @@
  */
 package proyecto3parcial;
 
+import java.util.logging.Logger;
+
 /**
  *
  * @author wpena
@@ -17,5 +19,6 @@ public class Proyecto3Parcial {
     public static void main(String[] args) {
         // TODO code application logic here
     }
+    //private static final Logger LOG = Logger.getLogger(Proyecto3Parcial.class.getName());
     
 }
