@@ -16,12 +16,23 @@ public class PantallaPrincipal extends javax.swing.JFrame {
      */
     Registro registro;
     PConsulta consulta;
+   // Datos datos;
+  
     public PantallaPrincipal() {
         initComponents();
         registro = new Registro();
-        add(registro);
+        registro.setBounds(200,0, 325, 455);
+        jPanel1.add(registro);
+        //add(registro);
         consulta = new PConsulta();
-        add(consulta);
+        //add(consulta);
+        consulta.setBounds(50,0, 620, 345);
+        jPanel1.add(consulta);
+       // datos = new Datos();
+        //add(consulta);
+       // datos.setBounds(50,0, 700, 565);
+       // jPanel1.add(datos);
+       
                 
     }
 
@@ -34,18 +45,43 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        BSalir = new javax.swing.JMenuItem();
+        MModificar = new javax.swing.JMenu();
         RegistroPX = new javax.swing.JMenuItem();
         MConsulta = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 855, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 530, Short.MAX_VALUE)
+        );
+
         jMenu1.setText("File");
+
+        BSalir.setText("Salir");
+        BSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSalirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(BSalir);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Pacientes");
+        MModificar.setText("Pacientes");
 
         RegistroPX.setText("Registro");
         RegistroPX.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +89,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 RegistroPXActionPerformed(evt);
             }
         });
-        jMenu2.add(RegistroPX);
+        MModificar.add(RegistroPX);
 
         MConsulta.setText("Consulta");
         MConsulta.addActionListener(new java.awt.event.ActionListener() {
@@ -61,9 +97,17 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 MConsultaActionPerformed(evt);
             }
         });
-        jMenu2.add(MConsulta);
+        MModificar.add(MConsulta);
 
-        jMenuBar1.add(jMenu2);
+        jMenuItem1.setText("Modificar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        MModificar.add(jMenuItem1);
+
+        jMenuBar1.add(MModificar);
 
         setJMenuBar(jMenuBar1);
 
@@ -71,11 +115,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 384, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -83,15 +127,34 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void RegistroPXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroPXActionPerformed
         // TODO add your handling code here:
+      //  fondo.setVisible(false);
         consulta.setVisible(false);
+        //datos.setVisible(false);
         registro.setVisible(true);
+        
     }//GEN-LAST:event_RegistroPXActionPerformed
 
     private void MConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MConsultaActionPerformed
         // TODO add your handling code here:
+        //fondo.setVisible(false);
         registro.setVisible(false);
+      //  datos.setVisible(false);
         consulta.setVisible(true);
+       
     }//GEN-LAST:event_MConsultaActionPerformed
+
+    private void BSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_BSalirActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        registro.setVisible(false);
+        consulta.setVisible(false);
+       // datos.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,16 +186,19 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaPrincipal().setVisible(true);
+               new PantallaPrincipal().setVisible(true);
             }
-        });
+       });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem BSalir;
     private javax.swing.JMenuItem MConsulta;
+    private javax.swing.JMenu MModificar;
     private javax.swing.JMenuItem RegistroPX;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

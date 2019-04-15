@@ -5,13 +5,17 @@
  */
 package proyecto3parcial;
 
-import com.mysql.jdbc.Connection;
+//import com.mysql.jdbc.Statement;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
+
 
 
 
@@ -25,25 +29,13 @@ public class Registro extends javax.swing.JInternalFrame {
      * Creates new form Registro
      */
     
-    
+       
+      Connection con = null ;
+      Statement stmt = null;
     public Registro() {
       initComponents();
       
-      Connection conn = null ;
       
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306 /pacientes","root", "");
-            Statement stmt =conn.createStatement();
-           stmt.executeUpdate("INSERT INTO registro VALUES('00001','Juan','Lopez','1987-05-23','M','0506198700937')");
-        } catch (SQLException ex) {
-            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Falla sin conexion a la Base de Datos");
-        }
     }
 
     /**
@@ -55,143 +47,109 @@ public class Registro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        GrupSexo = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         txtnombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtapeliido = new javax.swing.JTextField();
+        txtapellido = new javax.swing.JTextField();
         jGuardar = new javax.swing.JButton();
-        jMasculino = new javax.swing.JRadioButton();
-        jFemenino = new javax.swing.JRadioButton();
-        txtidentidad = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        OM = new javax.swing.JRadioButton();
+        OF = new javax.swing.JRadioButton();
+        txtfecha = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtFolio = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         setClosable(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Nombre");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, 30));
 
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnombreActionPerformed(evt);
             }
         });
+        getContentPane().add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 183, 30));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Apellido");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, 30));
 
-        txtapeliido.addActionListener(new java.awt.event.ActionListener() {
+        txtapellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtapeliidoActionPerformed(evt);
+                txtapellidoActionPerformed(evt);
             }
         });
+        getContentPane().add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 182, 30));
 
+        jGuardar.setIcon(new javax.swing.ImageIcon("C:\\Users\\wpena\\Pictures\\Capture.PNG")); // NOI18N
         jGuardar.setText("Guardar");
+        jGuardar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(jGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 375, 100, -1));
 
-        jMasculino.setText("Masculino");
-        jMasculino.addActionListener(new java.awt.event.ActionListener() {
+        OM.setBackground(new java.awt.Color(255, 255, 255));
+        GrupSexo.add(OM);
+        OM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        OM.setText("Masculino");
+        OM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMasculinoActionPerformed(evt);
+                OMActionPerformed(evt);
             }
         });
+        getContentPane().add(OM, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
 
-        jFemenino.setText("Femenino");
+        OF.setBackground(new java.awt.Color(255, 255, 255));
+        GrupSexo.add(OF);
+        OF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        OF.setText("Femenino");
+        getContentPane().add(OF, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, -1, -1));
+        getContentPane().add(txtfecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 182, 30));
 
-        txtidentidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidentidadActionPerformed(evt);
-            }
-        });
+        jLabel4.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("Fecha  Nacimiento");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, -1, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Identidad");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Fecha de Nacimiento");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel5.setText("Registro de Pacientes");
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Sexo");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtnombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jMasculino)
-                                        .addGap(9, 9, 9)
-                                        .addComponent(jFemenino))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtapeliido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                                            .addComponent(txtidentidad, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addGap(187, 187, 187))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jGuardar)
-                .addGap(261, 261, 261))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtapeliido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtidentidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFemenino)
-                    .addComponent(jMasculino)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addComponent(jGuardar)
-                .addGap(43, 43, 43))
-        );
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("ID");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, 30));
+
+        txtFolio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFolioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 183, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto3parcial/Sin título-1-01.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, -1));
+
+        jLabel5.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\wpena\\Pictures\\944058818eb45084ed141472008417d2b632357.png")); // NOI18N
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 320, 230));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -200,26 +158,56 @@ public class Registro extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
 
-    private void txtapeliidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapeliidoActionPerformed
+    private void txtapellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtapeliidoActionPerformed
+    }//GEN-LAST:event_txtapellidoActionPerformed
+
+    private void OMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OMActionPerformed
+
+    private void txtFolioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFolioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFolioActionPerformed
 
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        int year = txtfecha.getCalendar().get(Calendar.YEAR);
+        int mes =  txtfecha.getCalendar().get(Calendar.MONTH);
+        int dia =  txtfecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+
+        String FNacimiento= ""+year+"-"+mes+"-"+dia;
+        String sexo = null;
+
+        if (OM.isSelected()){
+            sexo="M";
+        } if (OF.isSelected()){
+            sexo="F";
+        }
+        {
+        }
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/pacientes","root","");
+            stmt =  con.createStatement();
+            stmt.executeUpdate("INSERT INTO registro VALUES ('"+txtFolio.getText()+"','"+txtnombre.getText()+"','"+txtapellido.getText()+"','"+FNacimiento+"','"+sexo+"')");
+            JOptionPane.showMessageDialog(null, "Registro Exitoso");
+        } catch (SQLException ex) {
+            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Falla en conexion a la Base de Datos");
+        }
     }//GEN-LAST:event_jGuardarActionPerformed
-
-    private void jMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMasculinoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMasculinoActionPerformed
-
-    private void txtidentidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidentidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidentidadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JRadioButton jFemenino;
+    private javax.swing.ButtonGroup GrupSexo;
+    private javax.swing.JRadioButton OF;
+    private javax.swing.JRadioButton OM;
     private javax.swing.JButton jGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -227,9 +215,12 @@ public class Registro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JRadioButton jMasculino;
-    private javax.swing.JTextField txtapeliido;
-    private javax.swing.JTextField txtidentidad;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField txtFolio;
+    private javax.swing.JTextField txtapellido;
+    private com.toedter.calendar.JDateChooser txtfecha;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
-}
+
+    }
+
