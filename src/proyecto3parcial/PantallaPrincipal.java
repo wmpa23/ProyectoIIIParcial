@@ -23,15 +23,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         registro = new Registro();
         registro.setBounds(200,0, 325, 455);
         jPanel1.add(registro);
-        //add(registro);
         consulta = new PConsulta();
-        //add(consulta);
         consulta.setBounds(50,0, 620, 345);
         jPanel1.add(consulta);
-       // datos = new Datos();
-        //add(consulta);
-       // datos.setBounds(50,0, 700, 565);
-       // jPanel1.add(datos);
+       
        
                 
     }
@@ -52,7 +47,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         MModificar = new javax.swing.JMenu();
         RegistroPX = new javax.swing.JMenuItem();
         MConsulta = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,14 +93,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
         MModificar.add(MConsulta);
 
-        jMenuItem1.setText("Modificar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        MModificar.add(jMenuItem1);
-
         jMenuBar1.add(MModificar);
 
         setJMenuBar(jMenuBar1);
@@ -129,7 +115,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
       //  fondo.setVisible(false);
         consulta.setVisible(false);
-        //datos.setVisible(false);
         registro.setVisible(true);
         
     }//GEN-LAST:event_RegistroPXActionPerformed
@@ -138,7 +123,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         //fondo.setVisible(false);
         registro.setVisible(false);
-      //  datos.setVisible(false);
         consulta.setVisible(true);
        
     }//GEN-LAST:event_MConsultaActionPerformed
@@ -147,14 +131,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_BSalirActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        registro.setVisible(false);
-        consulta.setVisible(false);
-       // datos.setVisible(true);
-        
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,7 +174,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem RegistroPX;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
