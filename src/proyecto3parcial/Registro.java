@@ -201,6 +201,9 @@ public class Registro extends javax.swing.JInternalFrame {
             Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Falla en conexion a la Base de Datos");
         }
+         txtFolio.setText("");
+         txtnombre.setText("");
+         txtapellido.setText("");
     }//GEN-LAST:event_jGuardarActionPerformed
 
 
